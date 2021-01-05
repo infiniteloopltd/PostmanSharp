@@ -1,0 +1,12 @@
+C:\Users\fiach\source\repos\PostmanLib\bin\Release\netcoreapp3.1\PostmanLib.deps.json
+C:\Users\fiach\source\repos\PostmanLib\bin\Release\netcoreapp3.1\PostmanLib.runtimeconfig.json
+C:\Users\fiach\source\repos\PostmanLib\bin\Release\netcoreapp3.1\PostmanLib.runtimeconfig.dev.json
+C:\Users\fiach\source\repos\PostmanLib\bin\Release\netcoreapp3.1\PostmanLib.dll
+C:\Users\fiach\source\repos\PostmanLib\bin\Release\netcoreapp3.1\PostmanLib.pdb
+C:\Users\fiach\source\repos\PostmanLib\obj\Release\netcoreapp3.1\PostmanLib.csprojAssemblyReference.cache
+C:\Users\fiach\source\repos\PostmanLib\obj\Release\netcoreapp3.1\PostmanLib.AssemblyInfoInputs.cache
+C:\Users\fiach\source\repos\PostmanLib\obj\Release\netcoreapp3.1\PostmanLib.AssemblyInfo.cs
+C:\Users\fiach\source\repos\PostmanLib\obj\Release\netcoreapp3.1\PostmanLib.csproj.CoreCompileInputs.cache
+C:\Users\fiach\source\repos\PostmanLib\obj\Release\netcoreapp3.1\PostmanLib.dll
+C:\Users\fiach\source\repos\PostmanLib\obj\Release\netcoreapp3.1\PostmanLib.pdb
+C:\Users\fiach\source\repos\PostmanLib\obj\Release\netcoreapp3.1\PostmanLib.genruntimeconfig.cache

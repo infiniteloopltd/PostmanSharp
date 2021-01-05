@@ -1,0 +1,5 @@
+C:\Users\fiach\source\repos\PostmanLambda\bin\Release\netcoreapp3.1\publish\PostmanLib.dll
+C:\Users\fiach\source\repos\PostmanLambda\bin\Release\netcoreapp3.1\publish\PostmanLib.deps.json
+C:\Users\fiach\source\repos\PostmanLambda\bin\Release\netcoreapp3.1\publish\PostmanLib.runtimeconfig.json
+C:\Users\fiach\source\repos\PostmanLambda\bin\Release\netcoreapp3.1\publish\PostmanLib.pdb
+C:\Users\fiach\source\repos\PostmanLambda\bin\Release\netcoreapp3.1\publish\Newtonsoft.Json.dll
