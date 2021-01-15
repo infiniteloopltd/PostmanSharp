@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Linq;
 using System.Net;
+using System.Runtime.InteropServices.ComTypes;
 using System.Text;
+using System.Text.RegularExpressions;
 using Newtonsoft.Json.Linq;
 
 namespace PostmanLib
@@ -21,18 +23,40 @@ namespace PostmanLib
             if (item == null) throw new ArgumentException("function not recognized");
             var request = item["request"];
             var method = request["method"] + "";
-            if (method != "GET") 
-                throw new NotImplementedException("Only HTTP GET is currently supported");
-            if (request["header"] is JArray headers && headers.Count > 0) 
-                throw new NotImplementedException("HTTP Headers are not yet supported");
+            using var web = new WebClient {Encoding = Encoding.UTF8};
             var url = request["url"]["raw"] + "";
             var jVariables = JObject.Parse(variables);
-            foreach (var (key,value) in jVariables)
+            foreach (var (key, value) in jVariables)
             {
-                url = url.Replace("{{" + key + "}}", value+"");
+                url = url.Replace("{{" + key + "}}", value + "");
             }
-            using var web = new WebClient {Encoding = Encoding.UTF8};
-            var result = web.DownloadString(url);
+
+            if (request["auth"] != null && request["auth"]["type"] + "" == "basic")
+            {
+                var username = request["auth"]["basic"].First(j => j["key"] + "" == "username")["value"] + "";
+                var password = request["auth"]["basic"].First(j => j["key"] + "" == "password")["value"] + "";
+                var b64 = Convert.ToBase64String(Encoding.UTF8.GetBytes(username + ":" + password));
+                web.Headers.Add(HttpRequestHeader.Authorization,"Basic " + b64);
+            }
+            if (request["header"] is JArray headers && headers.Count > 0)
+                throw new NotImplementedException("HTTP Headers are not yet supported");
+            string result;
+            switch (method)
+            {
+                case "GET":
+                    result = web.DownloadString(url);
+                    break;
+                case "POST":
+                    var raw = request["body"]["raw"].ToString();
+                    foreach (var (key, value) in jVariables)
+                    {
+                        raw = raw.Replace("{{" + key + "}}", value + "");
+                    }
+                    result = web.UploadString(url,raw);
+                    break;
+                default:
+                    throw new NotImplementedException("Only HTTP GET and POST are currently supported");
+            }
             return result;
         }
     }
