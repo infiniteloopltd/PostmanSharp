@@ -38,8 +38,24 @@ namespace PostmanLib
                 var b64 = Convert.ToBase64String(Encoding.UTF8.GetBytes(username + ":" + password));
                 web.Headers.Add(HttpRequestHeader.Authorization,"Basic " + b64);
             }
-            if (request["header"] is JArray headers && headers.Count > 0)
-                throw new NotImplementedException("HTTP Headers are not yet supported");
+
+            if (request["auth"] != null && request["auth"]["type"] + "" == "bearer")
+            {
+                var token = request["auth"]["bearer"].First(j => j["key"] + "" == "token")["value"] + "";
+                foreach (var (key, value) in jVariables)
+                {
+                    token = token.Replace("{{" + key + "}}", value + "");
+                }
+                web.Headers.Add(HttpRequestHeader.Authorization, "Bearer " + token);
+            }
+            
+            if (request["header"] is JArray headers)
+            {
+                foreach (var header in headers)
+                {
+                    web.Headers.Add(header["key"].ToString(), header["value"].ToString());
+                }
+            }
             string result;
             switch (method)
             {
