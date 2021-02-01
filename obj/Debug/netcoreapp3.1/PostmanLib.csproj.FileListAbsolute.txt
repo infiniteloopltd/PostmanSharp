@@ -6,3 +6,4 @@ C:\Users\fiach\source\repos\PostmanLib\obj\Debug\netcoreapp3.1\PostmanLib.Assemb
 C:\Users\fiach\source\repos\PostmanLib\obj\Debug\netcoreapp3.1\PostmanLib.csproj.CoreCompileInputs.cache
 C:\Users\fiach\source\repos\PostmanLib\obj\Debug\netcoreapp3.1\PostmanLib.dll
 C:\Users\fiach\source\repos\PostmanLib\obj\Debug\netcoreapp3.1\PostmanLib.pdb
+C:\Users\fiach\source\repos\PostmanLib\obj\Debug\netcoreapp3.1\PostmanLib.csprojAssemblyReference.cache

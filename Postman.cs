@@ -1,9 +1,8 @@
 ﻿using System;
 using System.Linq;
 using System.Net;
-using System.Runtime.InteropServices.ComTypes;
 using System.Text;
-using System.Text.RegularExpressions;
+using System.Web;
 using Newtonsoft.Json.Linq;
 
 namespace PostmanLib
@@ -28,7 +27,7 @@ namespace PostmanLib
             var jVariables = JObject.Parse(variables);
             foreach (var (key, value) in jVariables)
             {
-                url = url.Replace("{{" + key + "}}", value + "");
+                url = url.Replace("{{" + key + "}}", HttpUtility.UrlEncode(value+""));
             }
 
             if (request["auth"] != null && request["auth"]["type"] + "" == "basic")
